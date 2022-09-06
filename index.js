@@ -1,19 +1,19 @@
 const http = require('http');
-const fs = require('fs');
+const { handleReqRes } = require('./helpers/handleReqRes');
 
-const server = http.createServer((req, res) => {
-    const myReadStream = fs.createReadStream(`${__dirname}/input.txt`, 'utf-8');
-    myReadStream.pipe(res);
-});
+const app = {};
 
-server.listen(3000);
-console.log('listening on port 3000');
+app.config = {
+    port: 3000,
+};
 
-// const fs = require('fs');
+app.createServer = () => {
+    const server = http.createServer(app.handleReqRes);
+    server.listen(app.config.port, () => {
+        console.log(`listening to port ${app.config.port}`);
+    });
+};
 
-// const ourReadStream = fs.createReadStream(`${__dirname}/jp-text.txt`, 'utf-8');
-// const writeStream = fs.createWriteStream(`${__dirname}/output.txt`);
-// ourReadStream.on('data', (chunk) => {
-//     writeStream.write(chunk);
-// });
-// console.log('hello world');
+app.handleReqRes = handleReqRes;
+
+app.createServer();

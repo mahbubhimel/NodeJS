@@ -2,7 +2,7 @@ const handler = {};
 
 handler.sampleHandler = (requestProperties, callback) => {
     console.log(requestProperties);
-    callback(200, {
+    callback(300, {
         message: 'This is a simple url',
     });
 };

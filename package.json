@@ -13,7 +13,7 @@
     "prettier": "^2.7.1"
   },
   "scripts": {
-    "start": "SET NODE_ENV=staging&node index",
-    "production": "SET NODE_ENV=production&node index"
+    "start": "SET NODE_ENV=staging&&nodemon index",
+    "production": "SET NODE_ENV=production&&nodemon index"
   }
 }
